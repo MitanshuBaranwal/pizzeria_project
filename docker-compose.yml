@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+      - celery_worker
+    environment:
+      - DJANGO_SETTINGS_MODULE=pizzeria_project.settings  # Updated project name
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: Root@321
+      MYSQL_DATABASE: pizzeria_db
+
+  redis:
+    image: redis:latest
+
+  celery_worker:
+    build: .
+    command: celery -A pizzeria_project worker --pool=solo -l info  # Updated app name
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - redis
+    environment:
+      - DJANGO_SETTINGS_MODULE=pizzeria_project.settings  # Updated project name
+      - CELERY_BROKER_URL=redis://redis:6379/0
+
+volumes:
+  db_data:
+
+networks:
+  mynetwork:
+    external:
+      name: pizzeria_network
+
+
