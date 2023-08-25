@@ -80,8 +80,8 @@ Example request body:
       
     
 Track an Order
-  To track the status of an order, make a GET request to the /api/track_order/{order_id}/ endpoint, where {order_id} is the order's ID you want to track.
+     To track the status of an order, make a GET request to the /api/track_order/{order_id}/ endpoint, where {order_id} is the order's ID you want to track.
 
 Example request:
-  http://127.0.0.1:8000/api/track-order/1/
+     http://127.0.0.1:8000/api/track-order/1/
 
