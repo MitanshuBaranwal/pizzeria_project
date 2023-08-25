@@ -85,6 +85,15 @@ Track an Order
 Example request:
      http://127.0.0.1:8000/api/track-order/1/
 
+### Use with Docker
+1. Build docker container using the below command:
+      ```
+      docker-compose up --build
+      ```
+2.  Start Docker Compose services in detached mode:
+      ```   
+      docker-compose up -d
+      ```
 
 
 
