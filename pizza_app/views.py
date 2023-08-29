@@ -5,20 +5,23 @@ from .models import Order, OrderStatus
 from .serializers import OrderSerializer, OrderStatusSerializer
 from .tasks import update_order_status
 
-# Define pizza prices in a dictionary
+# Define pizza,cheese types and toppings' prices in a dictionary
+
 PRICES_DICT = {
     "thin-crust": 100,
     "normal": 120,
     "cheese-burst": 130,
-    'mozarella': 25,
-    'cheddar': 20,
-    'parmesan': 25,
-    'gouda': 30,
-    'Pepperoni': 10,
-    'Mushrooms': 15,
-    'Onions': 5,
-    'Green Peppers': 8,
-    'Olives': 7,
+    "mozarella": 25,
+    "cheddar": 20,
+    "parmesan": 25,
+    "gouda": 30,
+    "Pepperoni": 10,
+    "Mushrooms": 15,
+    "Onions": 5,
+    "Green Peppers": 8,
+    "Olives": 7,
+    "Spinach": 9,
+    "Tomato": 11
 }
 
 def calculate_price(request):
