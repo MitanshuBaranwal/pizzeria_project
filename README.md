@@ -50,13 +50,18 @@ This is a pizza ordering system built using Django and Django Rest Framework and
     python manage.py runserver
     ```
 
-Usage
-Calculate Pizza Price
+### Usage
+**1. Calculate Pizza Price:**
+
 To calculate the price of a pizza, make a POST request to the /api/get-price/ endpoint with the desired pizza configuration, including the base, cheese, and toppings in the request body.
 
-Example request body:
-  http://127.0.0.1:8000/api/get-price/
+**Example request:**
 
+  URL  :  http://127.0.0.1:8000/api/get-price/
+
+  Http Method: Post
+
+  Body :
     
       {
           "base": "cheese-burst",
@@ -64,12 +69,27 @@ Example request body:
           "toppings": ["Pepperoni","Mushrooms","Onions","Green Peppers","Olives"]
       }
     
-    
-Place an Order
+**Example Curl:**
+
+      curl --location 'http://127.0.0.1:8000/api/get-price/' \
+      --header 'Content-Type: application/json' \
+      --data '{
+          "base": "cheese-burst",
+          "cheese": "gouda",
+          "toppings": ["Pepperoni","Mushrooms","Onions","Green Peppers","Olives"]
+      }
+      '    
+**2. Place an Order**
+
   To place a pizza order, make a POST request to the /api/create-order/ endpoint with the desired pizza configuration, including the base, cheese, and toppings in the request body.
 
-Example request body:
-  http://127.0.0.1:8000/api/create-order/
+**Example request:**
+
+  URL  : http://127.0.0.1:8000/api/create-order/
+  
+  Http Method: Post
+  
+  Body : 
 
     
       {
@@ -78,12 +98,33 @@ Example request body:
           "toppings": ["Pepperoni","Mushrooms","Onions","Green Peppers","Olives"]
       }
       
-    
-Track an Order
-     To track the status of an order, make a GET request to the /api/track_order/{order_id}/ endpoint, where {order_id} is the order's ID you want to track.
+**Example Curl:**
 
-Example request:
-     http://127.0.0.1:8000/api/track-order/1/
+
+      curl --location 'http://127.0.0.1:8000/api/create-order/' \
+      --header 'Content-Type: application/json' \
+      --data '  {
+            "base": "cheese-burst",
+            "cheese": "gouda",
+            "toppings": ["Pepperoni","Mushrooms","Onions","Green Peppers","Olives"]
+        }'
+  
+**3. Track an Order**
+
+   To track the status of an order, make a GET request to the /api/track_order/{order_id}/ endpoint, where {order_id} is the order's ID you want to track.
+
+**Example request:**
+   URL  :  http://127.0.0.1:8000/api/track-order/1/
+   
+   Http Method: Get
+   
+   Body :
+         N.A.
+         
+**Example Curl:**
+
+      curl --location 'http://127.0.0.1:8000/api/track-order/2/' \
+      --data ''
 
 ### Use with Docker
 1. Build docker container using the below command:
